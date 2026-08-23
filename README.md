@@ -1,51 +1,68 @@
-# The 2-Hour Cold Email System — Knowledge Base
+# The Outbound Workshop — Resources & System Overview
 
-The complete reference for the **micro-offer funnel**: the front-end micro course, all
-three order bumps, all five bonuses, the one-time offer, every tool referenced, and
-the fulfilment machinery that delivers it.
+Everything from the 30-minute outbound workshop, in one place.
 
-This repository is **documentation only**. The application code lives in
-[`micro-offer-funnel`](https://github.com/anirudhgupta1177/micro-offer-funnel) (the funnel)
-and [`outbound-training-LP`](https://github.com/anirudhgupta1177/outbound-training-LP)
-(the member portal that hosts the training).
+This is the companion repo for the session: the system you just saw, the tools it runs on,
+the resources to build it yourself, and a checklist to work through afterwards.
 
 ---
 
-## The offer at a glance
+## What the system does
 
-| Key | Product | Price (ex-GST) | Anchor | Slot |
-| --- | --- | --- | --- | --- |
-| `FE` | The 2-Hour Cold Email System | ₹997 | ₹9,997 | Front-end |
-| `OB1` | The Best-Performing Cold Email Copy Swipe File | ₹599 | ₹2,000 | Order bump |
-| `OB2` | The 78-Page Outbound Implementation Guide | ₹699 | ₹4,000 | Order bump |
-| `OB3` | LinkedIn Outreach Automation Training | ₹799 | ₹7,000 | Order bump |
-| `OTO1` | 1:1 Live Session With Anirudh (60 min) | ₹1,497 | ₹15,000 | One-time offer |
+Take cold email from *"I sent 50 emails from my Gmail and got nothing"* to a campaign that
+sends **1,000+ emails a day** without burning your domain, targets a list built by AI, and
+opens with an ask people actually say yes to.
 
-Every listed price is **exclusive of 18% GST**, which is added at checkout.
-Maximum realisable order value: **₹5,417** inc. GST — see [Pricing & GST](docs/07-pricing-and-gst.md).
+Three phases, always in the same order.
 
-## The five bonuses (included free with `FE`)
+```
+  PHASE 1 · BUILD                PHASE 2 · TARGET              PHASE 3 · LAUNCH
+  ───────────────                ────────────────              ────────────────
+  Dedicated domains              Business context              Copy that never asks
+  US-IP mailboxes         ──▶    into an AI skill       ──▶    for a call first
+  SPF · DKIM · DMARC             ↓                             ↓
+  14-day warm-up                 5–10 ICPs with                Spintext · spam-check
+                                 hard filters                  ↓
+  ↓                              ↓                             Launch
+  1,000+ emails/day              Scraped + verified list
+  without burning
+  your main domain
 
-| # | Bonus | Stated value |
+  ─────────────────────────────────────────────────────────────────────────────
+  Result from the live campaign built in the session:
+  2,000 leads reached · 90 replies · 19 qualified · in 2 days
+```
+
+Skip a phase and the ones after it stop working. Great copy sent from a cold domain lands
+in spam. A perfect domain setup sending to the wrong list gets ignored.
+
+---
+
+## Quick links
+
+| Resource | What it is | Link |
 | --- | --- | --- |
-| 1 | The AI ICP Engine — Claude Skill File | ₹5,000 |
-| 2 | The Outbound Copywriting Skill | ₹7,000 |
-| 3 | Whimsical Implementation Map | ₹10,000 |
-| 4 | The Cold Email Cost + ROI Calculator | ₹4,000 |
-| 5 | Private VIP Community | Priceless |
+| **Cold Email Copy Swipe File** | 20+ real sent emails, annotated with why each one worked | [Open →](https://navy-professor-355.notion.site/Best-Performing-Email-Copy-Examples-1cd26bb2645a46cab8e5cd970ef04259) |
+| **Outbound Implementation Guide** | 78-page reference — targeting, deliverability, copy, diagnostics | [Open →](https://claude.ai/public/artifacts/d403a11f-86b5-42d3-b1d1-ba87f84b4e0f) |
+| **Community** | Ask questions, get unstuck, see what others are running | [Join →](https://chat.whatsapp.com/L3ht1NZZvqqEEBlT3XML0b) |
+| **Full training** | The complete build, unedited, end to end | [course.intentledsales.com](https://course.intentledsales.com) |
 
-## The funnel
+Full descriptions in [02 — Resources](docs/02-resources.md).
 
-```
-Ads / traffic
- └─▶ /micro/cold-email-system          Front-end sales page (11 sections)
-      │                                Every CTA opens a popup checkout — there is no checkout route
-      └─▶ Popup checkout · 3 order bumps · Razorpay
-           └─▶ /oto-1                  OTO 1 — 1:1 Live Session, ₹1,497
-                ├─ Buy ─────────────▶ /call-booking ─▶ /thank-you
-                └─ Decline ─▶ /no-thanks   Last-chance re-offer (+ full access)
-                                  └─ Buy ─▶ /call-booking ─▶ /thank-you
-```
+---
+
+## Start here
+
+If you do nothing else after this session, do these three things in this order:
+
+1. **Run the cost calculator before you buy anything.** Know what your setup costs to run
+   per month before you spend a rupee on domains.
+2. **Build Phase 1 first, today.** The 14-day warm-up starts the moment you finish it —
+   every day you wait is a day you can't send.
+3. **Build your ICP before you write a single email.** Copy written against a vague list is
+   what kills most first campaigns.
+
+The full sequence is in [04 — Implementation Checklist](docs/04-implementation-checklist.md).
 
 ---
 
@@ -53,30 +70,18 @@ Ads / traffic
 
 | Doc | What's in it |
 | --- | --- |
-| [01 — Offer architecture](docs/01-offer-architecture.md) | The full funnel map, every route, the offer ladder, cart rules |
-| [02 — The micro course](docs/02-micro-course.md) | The 2-Hour Cold Email System: all 3 phases, the promise, the curriculum |
-| [03 — Order bumps](docs/03-order-bumps.md) | OB1, OB2 and OB3 in full — positioning, contents, delivery |
-| [04 — Bonuses](docs/04-bonuses.md) | All 5 bonuses in full — what each is, why it exists, how it's delivered |
-| [05 — OTO: 1:1 session](docs/05-oto-1on1-session.md) | The one-time offer, the decline path, the re-offer |
-| [06 — Tools reference](docs/06-tools-reference.md) | **Every tool referenced**, split into the stack taught and the stack that runs the funnel |
-| [07 — Pricing & GST](docs/07-pricing-and-gst.md) | The catalogue, GST maths, every cart combination, coupons |
-| [08 — Fulfilment & delivery](docs/08-fulfilment-and-delivery.md) | Entitlement slugs, portal routes, n8n workflow, delivery links |
-| [09 — Asset inventory](docs/09-asset-inventory.md) | Every proof shot, mockup, illustration and clip, and where it's used |
-| [10 — Links index](docs/10-links-index.md) | Every URL in the system, in one table |
-| [11 — Source map](docs/11-source-map.md) | Which file in which repo is the authority for each fact here |
+| [01 — System Overview](docs/01-system-overview.md) | The three phases in full, what breaks without each, and the myths worth unlearning |
+| [02 — Resources](docs/02-resources.md) | Every resource from the session, what it does, and where to get it |
+| [03 — Tools](docs/03-tools.md) | The stack, phase by phase — and what it actually costs to run |
+| [04 — Implementation Checklist](docs/04-implementation-checklist.md) | A sequenced list to work through after the session |
+| [05 — FAQ](docs/05-faq.md) | The questions that come up every time |
 
 ---
 
-## How to read this
+## About
 
-Facts here are **sourced**. Where a claim comes from a specific file, that file is
-cited inline as `repo/path/to/file.js`. Where something is genuinely not recorded in
-any repository, it is marked **`TBD — not recorded`** rather than guessed at.
-[11 — Source map](docs/11-source-map.md) lists every authority.
+Run by **Anirudh Gupta** — Head of GTM Engineering at Instantly.ai, where the outbound
+motion peaked at 60,000+ emails a day. Runs Intent Led Sales, where 1M+ emails go out
+every month for real B2B and SaaS clients.
 
-## Contacts
-
-- **Support:** agent@theorganicbuzz.com
-- **Legal entity:** The Organic Buzz
-- **Brand:** IntentLedSales
-- **Instructor:** Anirudh Gupta ("Ani")
+Questions: **agent@theorganicbuzz.com**
