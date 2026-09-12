@@ -6,6 +6,50 @@ Uses **Enrich.so**. Needs `ENRICH_API_KEY` in `.env`.
 
 ---
 
+## Live in a workshop? Use quick_list.py
+
+Measured: **100 real emails in 3 minutes 34 seconds.** Two stages, no
+verification pass, nothing to babysit.
+
+```bash
+S=skills/build-the-list/scripts/quick_list.py
+
+python3 $S --count-only          # the pool size, free, instant
+python3 $S                       # 100 emails -> workshop_leads.csv
+python3 $S --limit 50            # fewer
+python3 $S --title Director --city Ahmedabad --limit 100
+```
+
+Defaults are the workshop ICP: Director, Operations Manager and General
+Manager, in Ahmedabad and Gandhinagar.
+
+What it does, and nothing else:
+
+```
+count (free)  ->  search pages in parallel  ->  ONE email-finder batch  ->  CSV
+```
+
+**Why it is fast**, and why the older path was not:
+
+| | |
+| --- | --- |
+| Search pages run in parallel, 10 at a time | the API ignores `limit` and always returns 25 a page, so this was the whole delay |
+| One finder batch, not chunks | one submit, one poll loop |
+| Blank names dropped before submitting | **a single blank `lastName` rejects the entire batch with a 400.** This is what killed an earlier 4,800 record run |
+| No verification pass | the finder already checks the mailbox |
+
+It pulls 8 records for every email wanted, because roughly 43% have a company
+domain and the finder hits on about 36% of those.
+
+Run `--count-only` first if the room wants to see the filters change. Counting
+is free and instant, so it is the right thing to demo live.
+
+> Two headers are load bearing. Cloudflare sits in front of the API and answers
+> a default urllib agent with `403 / error code 1010`, so every request sends a
+> browser `User-Agent` and an `Accept` header. Both scripts already do this.
+
+---
+
 ## The one rule
 
 **Count before you pull.** Counting is free and unlimited. Pulling costs money.
@@ -14,7 +58,10 @@ were right.
 
 ---
 
-## Run it
+## The full pipeline
+
+For a real campaign list, where you want headcount filtering and control over
+spend, use `enrich_so.py`:
 
 ```bash
 S=skills/build-the-list/scripts/enrich_so.py
