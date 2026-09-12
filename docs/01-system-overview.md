@@ -1,20 +1,186 @@
-# 01 — System Overview
+# 01 - System overview
 
-The outbound system, end to end.
+The whole system, in the order it has to be built.
 
 ---
 
 ## Why most cold email fails
 
-Not because cold email is dead. Because almost everyone starts at the wrong end.
+Not because cold email stopped working. Because almost everyone starts at the
+wrong end: they send from their main inbox, to a list pulled from a free tool,
+opening with "do you have 15 minutes for a call this week?"
 
-The usual attempt: send from your main inbox, to a list pulled from a free tool, opening
-with "do you have 15 minutes for a call this week?" Every one of those three choices is a
-failure on its own. Together, they guarantee nothing lands.
+Each of those three is fatal on its own. Together, nothing lands.
 
-The three phases fix them **in dependency order**. Great copy sent from a cold domain
-lands in spam. A perfect domain setup sending to the wrong list gets ignored. Order matters
-more than effort.
+The four steps fix them **in dependency order.** Great copy sent from a cold
+address goes to spam. A perfect setup sending to a wrong list gets ignored.
+Order matters more than effort.
+
+---
+
+## Step 1 - Set up sending (InboxKit)
+
+**The problem:** send cold email from your main business address and you can
+blacklist it within days. That address also carries your invoices, your client
+threads and your password resets. It does not come back.
+
+**What you build:**
+
+| | |
+| --- | --- |
+| New website names | Bought only for sending. Around ₹800 a year each |
+| Mailboxes on US servers | Email from an Indian internet address is treated as suspicious far more often |
+| SPF, DKIM, DMARC, MX | The records that prove the email is really from you. Set automatically, never by hand |
+| Domain to mailbox ratio | Three addresses per name. More and spam filters notice |
+| 14 day warm-up | The addresses quietly email each other to build trust, like a new phone number nobody recognises yet |
+
+**You end up with:** the ability to send 1,000+ emails a day without ever
+touching your business address.
+
+**How much you can send is a multiplication:**
+
+```
+14 website names  ×  3 addresses each  =  42 addresses
+42 addresses      ×  30 emails a day   =  1,260 a day
+```
+
+To send more, add addresses. Never push one address harder.
+
+**What people get wrong:** treating the 14 days as optional. It is the longest
+pole in the whole build, which is exactly why it starts on day one.
+
+---
+
+## Step 2 - Who and what (Claude)
+
+**The problem:** wrong targeting kills a campaign before copy matters. Most
+people stop at "who has this job title" and call that a buyer.
+
+**What you build:** 5 to 10 types of buyer, each with the pain they feel, the
+logic that gets it approved, and filters you can actually search against. Then
+the emails, for **one** of them.
+
+See [skills/write-the-copy/](../skills/write-the-copy/).
+
+### Every email that works has three parts
+
+1. **One line about them.** Something you could only know if you looked.
+2. **The problem that line points to.** The headache it tells you they have.
+3. **One small question.** Something they can accept with a single word.
+
+Under 100 words. Always.
+
+**Never ask for a call in the first email.** You are asking a stranger for 30
+minutes before giving them anything.
+
+| Instead of | Ask for |
+| --- | --- |
+| "Do you have 15 minutes this week?" | "Want me to send a three minute video breaking down what I would change?" |
+| "Let's hop on a quick call" | "Want to try a small pilot on one segment?" |
+
+**What people get wrong:** writing copy before they know who it is for. It reads
+generic no matter how good the writing is, because it has nothing to be about.
+
+---
+
+## Step 3 - Build the list (Enrich.so)
+
+**The problem:** cheap lists have roughly half their addresses dead. Every dead
+address bounces, and bouncing is what tells email providers you are a spammer.
+A ₹2,000 list can cost you every sending address you own.
+
+**What you build:**
+
+```
+Paste the filters in
+        |
+        v
+  Count, for free      <- change a filter, count again, still free
+        |
+        v
+  Pull the list        <- first 3 pages free, then 1 credit per record
+        |
+        v
+  Find the emails      <- the search gives you the person, not the address
+        |
+        v
+  A list around 8 in 10 correct
+```
+
+**The bar is 8 in 10.** Going to 9.5 in 10 costs more than the extra half is
+worth. Below 8, tighten the filters rather than adding another tool.
+
+See [skills/build-the-list/](../skills/build-the-list/).
+
+**What people get wrong:** emailing the whole list on day one. If the list is
+wrong you find out after burning all of it.
+
+---
+
+## Step 4 - Send and reply (Instantly)
+
+**The problem:** a newsletter tool will get you banned. Mailchimp and Mail Merge
+are built for people who signed up for your list. Use one for strangers and your
+account goes, your website name gets blacklisted, and everything lands in spam.
+
+**What you build:**
+
+| | |
+| --- | --- |
+| Addresses connected | The fleet from step 1 plugs in |
+| Three emails, spread over a week | Day 0, day 3, day 7 |
+| Five versions of each | Same message, different words, so volume does not look like volume |
+| Open and click tracking OFF | Both are spam signals on cold mail |
+| Sending window | The prospect's working hours, not yours |
+| Spam test | Before the first thousand sends, not after |
+
+See [skills/launch-on-instantly/](../skills/launch-on-instantly/).
+
+**What people get wrong:** judging it after two days. Most replies come from the
+second and third email.
+
+---
+
+## The whole thing in sequence
+
+```
+  Day 1     STEP 1   buy names, create addresses, set DNS
+              |      start the 14 day warm-up   <- clock starts here
+              |
+              +----------------------------+
+              v                             |  (warm-up runs in the background)
+  Day 1-3   STEP 2   who to email           |
+              |      write the emails       |
+              v                             |
+  Day 3-5   STEP 3   count, pull, verify    |
+              |                             |
+              v                             |
+  Day 5-8   STEP 4   load the sequence      |
+              |      run the spam test      |
+              v                             |
+  Day 15    <---------------------------------+
+            LAUNCH   warm-up done, one group goes live
+              |
+              v
+  Day 15+   replies start landing
+```
+
+---
+
+## If it is not working, check in this order
+
+Each step sits on the one above it. Fixing copy while the addresses are broken
+changes nothing.
+
+| Symptom | The layer at fault | Where to look |
+| --- | --- | --- |
+| Emails are not arriving | **Step 1** | DNS records, warm-up length, addresses per name |
+| Arriving, but nobody opens | **Step 1 or 2** | Sending reputation, or the subject line |
+| Good opens, no replies | **Step 2** | Is the buyer real? Does email one ask for a call? |
+| Replies, but the wrong people | **Step 3** | The filters are too loose |
+| Everything stops suddenly | **Step 1** | A name got flagged. Pause and diagnose before sending more |
+
+Change one thing at a time, and give it a full cycle before judging it.
 
 ---
 
@@ -22,165 +188,9 @@ more than effort.
 
 | The common belief | What actually holds up |
 | --- | --- |
-| Cold email is dead | Well-written, personalised email still works — **if the infrastructure is built right** |
-| You need a huge tech stack to run outbound | **80% list accuracy and the right sequence** beats an expensive stack every time |
-| Send low volume to "stay safe" | Low volume is what kills you. **40+ warmed mailboxes are safer than 1 inbox** sending 50 emails a day |
-| Personalisation at volume is impossible | AI-built ICPs and copy make "personalised at scale" the default, not the exception |
-| "I can figure this out myself" | You probably already tried. What's missing isn't effort — it's infrastructure, **the part no tutorial shows you** |
-| "My industry is different" | It's usually not the offer. It's that the last attempt skipped **the deliverability work that makes the offer land in an inbox at all** |
-
-> The people quietly booking 30+ calls a month aren't working harder than you. They fixed
-> the one thing nobody tells you to fix first — infrastructure.
-
----
-
-## Phase 1 · BUILD — Deliverability that doesn't burn
-
-**The problem:** send cold email from your main inbox and you can blacklist your primary
-domain within days. That domain also carries your invoices, your client threads and your
-password resets. It is not recoverable in any useful timeframe.
-
-**What you build:**
-
-| Step | Detail |
-| --- | --- |
-| Dedicated domains | Separate from your primary business domain. Never send cold from the domain you run your business on |
-| US-IP mailboxes | Where the sending actually happens |
-| DNS — SPF, DKIM, DMARC | The three authentication records. Set up **automatically**, not by hand |
-| Domain-to-mailbox ratio | A specific ratio keeps the setup from tripping spam filters. Overloading one domain is what gets it flagged |
-| 14-day warm-up | Automated sending between mailboxes to build a sending reputation before any real campaign goes out |
-
-**What you end up with:** infrastructure capable of **1,000+ emails a day** that never
-touches your primary domain's reputation.
-
-**The one thing people get wrong:** treating the 14-day warm-up as optional. It is the
-long pole in the whole system — it is the reason to build Phase 1 on day one rather than
-after you've finished planning everything else. You cannot compress it.
-
----
-
-## Phase 2 · TARGET — The AI ICP engine
-
-**The problem:** wrong targeting kills a campaign before copy matters at all. Most people
-skip straight to "who has this job title" and call that an ICP.
-
-**What you build:**
-
-```
-Your business context
-        │
-        ▼
-┌───────────────────────┐
-│  AI ICP skill file    │
-└───────────┬───────────┘
-            ▼
-  5–10 distinct ICPs, each with:
-    · the pain point they actually feel
-    · the buying logic that gets budget approved
-    · hard filters you can scrape against
-            │
-            ▼
-   Scrape + verify against those filters
-            │
-            ▼
-   A list that's ~80% accurate
-```
-
-**Why one tool instead of four:** free and cheap data sources tend to hand you a list with
-roughly a **50% bad-email rate**, which pushes people into stacking three or four
-verification tools on top. One tool that pulls *and* verifies replaces the stack.
-
-**The bar that matters:** 80% list accuracy. Chasing 95% costs more than the extra
-accuracy returns, and 80% plus the right sequence outperforms an expensive stack anyway.
-
-**The one thing people get wrong:** writing copy before the ICP exists. Copy written
-against a vague list reads generic no matter how good the writing is, because it has
-nothing specific to be about.
-
----
-
-## Phase 3 · LAUNCH — Low-resistance copy
-
-**The problem:** even a perfect list fails with the wrong ask. "Book a call" on a first
-email asks a stranger for 30 minutes before you've given them anything.
-
-**The governing rule: never ask for a call first.**
-
-Ask for something small instead — something that costs the recipient one word to accept:
-
-| Instead of | Ask for |
-| --- | --- |
-| "Do you have 15 minutes this week?" | "Want me to send a free Loom breaking down what I'd change?" |
-| "Let's hop on a quick call" | "Want to try a small pilot on one segment?" |
-
-**What you build:**
-
-| Step | Detail |
-| --- | --- |
-| Copy from the ICP | An AI skill trained on real emails that got replies — not template libraries |
-| Spintext | Variations so one email becomes five, which is what keeps volume from looking like volume |
-| Spam-check | Test inbox placement **before** launch, not after the first 1,000 sends |
-| Launch | Sequence configured and sent |
-
-**What the live campaign returned:** 2,000 leads reached · 90 replies · 19 qualified — in
-2 days. 4–5 meetings booked within the first 48 hours.
-
-**The one thing people get wrong:** sending the same email to everyone at volume. Without
-spintext, high volume is the fastest way to get pattern-matched into spam.
-
----
-
-## The whole thing in sequence
-
-```
-  Week 0    Calculate what the setup will cost to run
-              │
-              ▼
-  Day 1     PHASE 1 — buy domains, create mailboxes, set DNS
-              │        start the 14-day warm-up  ◀── clock starts here
-              │
-              ├──────────────────────────────┐
-              ▼                              │  (warm-up runs in the background)
-  Day 1-3   PHASE 2 — run the ICP skill      │
-              │        scrape + verify list  │
-              ▼                              │
-  Day 3-5   PHASE 3 — generate copy          │
-              │        spintext + spam-check │
-              ▼                              │
-  Day 15    ◀────────────────────────────────┘
-            LAUNCH — warm-up complete, campaign goes live
-              │
-              ▼
-  Day 15+   Replies start landing
-```
-
-Phases 2 and 3 run *during* the warm-up, not after it. That's what makes a two-week
-timeline a two-week timeline instead of a six-week one.
-
----
-
-## Who this works for
-
-**Works well:**
-- B2B or SaaS, where buyers are reachable at a work email address
-- Freelancers, agency owners, consultants, founders
-- Targeting the US, Europe or India
-- Starting from zero — arguably the better case, because you build it right the first time
-  instead of undoing a burned domain later
-
-**Doesn't work:**
-- Local, offline businesses
-- Selling directly to individual consumers
-- Anything where the buyer doesn't use email professionally
-
----
-
-## The numbers behind the system
-
-| Metric | Figure |
-| --- | --- |
-| Live campaign in the session | 2,000 leads reached · 90 replies · 19 qualified in 2 days |
-| A running client campaign | 6,785 contacted · 97.9% delivery · 26.5% reply rate |
-| At scale | 247.8K emails → 918 opportunities |
-| Sending capacity per setup | 1,000+ emails/day |
-| Volume run monthly at Intent Led Sales | 1M+ emails |
+| Cold email is dead | It works, **if the sending setup is built right** |
+| You need a big tech stack | **Three tools and the right order** beats an expensive stack |
+| Send low volume to stay safe | Low volume is what kills you. **40 warmed addresses are safer than one inbox** sending 50 a day |
+| Personalisation at volume is impossible | The filters and the copy skill make it the default |
+| I can figure this out myself | You probably tried. What is missing is not effort, it is **the infrastructure nobody shows you** |
+| My industry is different | Usually it is not. It is that the last attempt skipped **the part that gets the email into an inbox at all** |

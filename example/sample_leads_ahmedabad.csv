@@ -1,0 +1,5 @@
+email,firstName,lastName,companyName,jobTitle,city,domain,employeeCount,linkedinUrl,confidence,isCatchAll,verification
+priya.shah@example-textiles.in,Priya,Shah,Example Textiles,Operations Manager,Ahmedabad,example-textiles.in,84,https://www.linkedin.com/in/example-priya,high,,valid
+rahul@example-logistics.co.in,Rahul,Mehta,Example Logistics,Director,Ahmedabad,example-logistics.co.in,142,https://www.linkedin.com/in/example-rahul,high,yes,valid
+nikhil.patel@example-engineering.com,Nikhil,Patel,Example Engineering,General Manager,Gandhinagar,example-engineering.com,37,https://www.linkedin.com/in/example-nikhil,low,,valid
+ankita@example-foods.in,Ankita,Desai,Example Foods,Operations Manager,Ahmedabad,example-foods.in,215,https://www.linkedin.com/in/example-ankita,high,,valid

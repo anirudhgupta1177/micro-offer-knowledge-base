@@ -1,87 +1,93 @@
-# The Outbound Workshop — Resources & System Overview
+# The Outbound Workshop
 
-Everything from the 30-minute outbound workshop, in one place.
+Everything from the 45 minute live build, in one folder. Clone it, open Claude
+Code inside it, and build the whole system from here.
 
-This is the companion repo for the session: the system you just saw, the tools it runs on,
-the resources to build it yourself, and a checklist to work through afterwards.
-
----
-
-## What the system does
-
-Take cold email from *"I sent 50 emails from my Gmail and got nothing"* to a campaign that
-sends **1,000+ emails a day** without burning your domain, targets a list built by AI, and
-opens with an ask people actually say yes to.
-
-Three phases, always in the same order.
-
-```
-  PHASE 1 · BUILD                PHASE 2 · TARGET              PHASE 3 · LAUNCH
-  ───────────────                ────────────────              ────────────────
-  Dedicated domains              Business context              Copy that never asks
-  US-IP mailboxes         ──▶    into an AI skill       ──▶    for a call first
-  SPF · DKIM · DMARC             ↓                             ↓
-  14-day warm-up                 5–10 ICPs with                Spintext · spam-check
-                                 hard filters                  ↓
-  ↓                              ↓                             Launch
-  1,000+ emails/day              Scraped + verified list
-  without burning
-  your main domain
-
-  ─────────────────────────────────────────────────────────────────────────────
-  Result from the live campaign built in the session:
-  2,000 leads reached · 90 replies · 19 qualified · in 2 days
+```bash
+git clone https://github.com/anirudhgupta1177/micro-offer-knowledge-base.git
+cd micro-offer-knowledge-base
+cp .env.example .env      # paste your three keys in
+claude
 ```
 
-Skip a phase and the ones after it stop working. Great copy sent from a cold domain lands
-in spam. A perfect domain setup sending to the wrong list gets ignored.
+Then tell Claude:
+
+> read everything in docs/ and skills/ and follow it for everything we build today
+
+It now has the whole system, the tool APIs and the working scripts. It will
+follow a method instead of guessing.
 
 ---
 
-## Quick links
+## What you are building
 
-| Resource | What it is | Link |
-| --- | --- | --- |
-| **Cold Email Copy Swipe File** | 20+ real sent emails, annotated with why each one worked | [Open →](https://navy-professor-355.notion.site/Best-Performing-Email-Copy-Examples-1cd26bb2645a46cab8e5cd970ef04259) |
-| **Outbound Implementation Guide** | 78-page reference — targeting, deliverability, copy, diagnostics | [Open →](https://claude.ai/public/artifacts/d403a11f-86b5-42d3-b1d1-ba87f84b4e0f) |
-| **Community** | Ask questions, get unstuck, see what others are running | [Join →](https://chat.whatsapp.com/L3ht1NZZvqqEEBlT3XML0b) |
-| **Full training** | The complete build, unedited, end to end | [course.intentledsales.com](https://course.intentledsales.com) |
+Cold email that gets other businesses to reply, without a marketing team.
+Four steps, and **the order is the whole trick.**
 
-Full descriptions in [02 — Resources](docs/02-resources.md).
+```
+ STEP 1              STEP 2               STEP 3              STEP 4
+ Set up sending  ->  Who and what     ->  Build the list  ->  Send and reply
+ InboxKit            Claude               Enrich.so           Instantly
+
+ Addresses that      5 to 10 buyer        Counted free,       Sequence loaded,
+ reach people        types, and the       pulled, emails      tracking off,
+ 14 day warm-up      email written        found, verified     one group live
+ started             for one of them
+```
+
+Steps 2, 3 and 4 all run **while** the 14 day warm-up is going. That is what
+makes this two weeks instead of six.
 
 ---
 
-## Start here
+## What it returns
 
-If you do nothing else after this session, do these three things in this order:
+Measured over one month on a running setup:
 
-1. **Run the cost calculator before you buy anything.** Know what your setup costs to run
-   per month before you spend a rupee on domains.
-2. **Build Phase 1 first, today.** The 14-day warm-up starts the moment you finish it —
-   every day you wait is a day you can't send.
-3. **Build your ICP before you write a single email.** Copy written against a vague list is
-   what kills most first campaigns.
+| | |
+| --- | --- |
+| Emails sent | 22,000 |
+| Replies | 660 (3%) |
+| Genuinely interested | 264 (40% of replies) |
+| Became paying clients | 14 |
+| Revenue, at ₹50,000 average | **₹7,00,000** |
+| Tools, per month | **₹26,500** |
 
-The full sequence is in [04 — Implementation Checklist](docs/04-implementation-checklist.md).
+InboxKit ₹12,500 + Instantly ₹9,000 + Enrich.so ₹5,000. No salaries, no
+retainer, no ad spend. Your revenue number moves with your deal size. The rates
+in the middle do not.
 
 ---
 
 ## Contents
 
-| Doc | What's in it |
+| Folder | What is in it |
 | --- | --- |
-| [01 — System Overview](docs/01-system-overview.md) | The three phases in full, what breaks without each, and the myths worth unlearning |
-| [02 — Resources](docs/02-resources.md) | Every resource from the session, what it does, and where to get it |
-| [03 — Tools](docs/03-tools.md) | The stack, phase by phase — and what it actually costs to run |
-| [04 — Implementation Checklist](docs/04-implementation-checklist.md) | A sequenced list to work through after the session |
-| [05 — FAQ](docs/05-faq.md) | The questions that come up every time |
+| [docs/](docs/) | The system, the tools, the checklist, the questions that come up every time |
+| [skills/](skills/) | Working scripts for the list, the copy and the campaign |
+| [example/](example/) | The persona and offer built live, plus a real sample list |
+| [CLAUDE.md](CLAUDE.md) | How Claude should work through all of it |
+
+Start with [docs/01-system-overview.md](docs/01-system-overview.md), then work
+down [docs/04-implementation-checklist.md](docs/04-implementation-checklist.md).
+
+---
+
+## Is this for you?
+
+**Yes if:** you sell to other businesses, your buyer has a work email address,
+you know what you sell, and you will follow up more than once.
+
+**No if:** you sell to consumers, you sell to small local shops that do not use
+email, or you need customers this week. The setup alone needs 14 quiet days
+before the first email can go out.
 
 ---
 
 ## About
 
-Run by **Anirudh Gupta** — Head of GTM Engineering at Instantly.ai, where the outbound
-motion peaked at 60,000+ emails a day. Runs Intent Led Sales, where 1M+ emails go out
-every month for real B2B and SaaS clients.
+Run by **Anirudh Gupta**. Founder at Intent Led Sales, where we help businesses
+build automated lead generation channels. Head of Marketing at Enrich Labs.
+Previously GTM at Instantly.
 
 Questions: **agent@theorganicbuzz.com**
