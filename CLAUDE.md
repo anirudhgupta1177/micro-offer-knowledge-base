@@ -39,6 +39,9 @@ wants to skip step 1 and start with copy, stop and explain why that fails.
 - `skills/build-the-list/` - Enrich.so: free count, pull, find emails, verify, CSV
 - `skills/write-the-copy/` - the three part email, spam scan, spintax check
 - `skills/launch-on-instantly/` - campaign build to the launch standard
+- `skills/outbound-copywriting-builder/` - the full sequence: three opening
+  variants, threaded follow ups, offer menu, reply forecast. Use this when the
+  simple three part email is not enough
 
 Read a skill's `SKILL.md` before running its scripts.
 

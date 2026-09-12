@@ -64,7 +64,7 @@ in the middle do not.
 | Folder | What is in it |
 | --- | --- |
 | [docs/](docs/) | The system, the tools, the checklist, the questions that come up every time |
-| [skills/](skills/) | Working scripts for the list, the copy and the campaign |
+| [skills/](skills/) | Working scripts for the list, the copy and the campaign, plus the full sequence builder |
 | [example/](example/) | The persona and offer built live, plus a real sample list |
 | [CLAUDE.md](CLAUDE.md) | How Claude should work through all of it |
 

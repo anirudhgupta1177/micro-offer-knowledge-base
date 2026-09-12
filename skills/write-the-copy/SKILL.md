@@ -89,3 +89,13 @@ that asks for a call. It warns on shouting, long copy and thin spintax.
 Never use em dashes or en dashes. It is the most obvious sign a machine wrote
 the email, and it costs you credibility with exactly the buyers worth having.
 Use commas, full stops, or a plain hyphen. `copy_qa.py` normalises them for you.
+
+---
+
+## Going further
+
+This skill covers the first email and the checks. For a **complete sequence**
+(three structurally different opening emails, a threaded follow up, a
+conditional third, an offer menu and a reply forecast), use
+[outbound-copywriting-builder](../outbound-copywriting-builder/SKILL.md).
+Read its `references/swipe-file.md` before writing anything.
